@@ -1,0 +1,18 @@
+# QMates Bookmarks Backlog:
+- save a bookmark
+- show all saved bookmarks
+- delete a bookmark
+- mark as read a bookmark
+- fetch title from bookmark url metadata
+- fetch description from bookmark url
+- fetch image from bookmarl url metadata
+- search for a bookmark by title
+- search for a bookmark by description
+- social login session
+- add application chrome extension to save a page easily
+- add tags to a bookmark
+- search for a bookmark by tag
+- add custom notes to a bookmark
+- share a bookmark
+- create a list/group of bookmark
+- share a list/group of bookmark to other people that can add/remove articles
