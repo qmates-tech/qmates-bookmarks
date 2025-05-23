@@ -1,26 +1,21 @@
-import { afterAll, beforeAll, describe, it } from 'vitest'
+import { afterAll, describe, it } from 'vitest'
 import { bootstrapApp } from '../src/app-bootstrap'
-import { chromium, expect } from '@playwright/test'
+import { Browser } from './utils/browser'
 
 describe('Homepage', async () => {
-  const app = bootstrapApp({ port: 8888 })
+  const app = bootstrapApp({ port: 0 })
+  const baseUrl = await app.start()
+  const browser = new Browser(baseUrl)
 
-  beforeAll(() => app.start())
   afterAll(() => app.stop())
 
   it('shows all saved bookmarks', async () => {
-    const browser = await chromium.launch()
-    const context = await browser.newContext() // Create new context
-    const page = await context.newPage()
-
-    await page.goto('http://localhost:8888/')
+    const page = await browser.newPageTo('/')
 
     const list = page.getByRole('list')
     const listItems = list.getByRole('listitem')
-    await expect(listItems).toHaveCount(2)
-    await expect(listItems.nth(0)).toHaveText('https://www.youtube.com/watch?v=z9quxZsLcfo')
-    await expect(listItems.nth(1)).toHaveText('https://www.youtube.com/watch?v=aItVJprLYkg')
-
-    await browser.close()
+    await browser.expect(listItems).toHaveCount(2)
+    await browser.expect(listItems.nth(0)).toHaveText('https://www.youtube.com/watch?v=z9quxZsLcfo')
+    await browser.expect(listItems.nth(1)).toHaveText('https://www.youtube.com/watch?v=aItVJprLYkg')
   })
 })
