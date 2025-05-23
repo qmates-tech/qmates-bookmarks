@@ -1,0 +1,8 @@
+Dockerfile
+README.md
+node_modules
+*.log
+coverage
+dist
+.idea
+tests
