@@ -1,9 +1,13 @@
-export function homepage() {
-  const urls = ['https://www.youtube.com/watch?v=z9quxZsLcfo', 'https://www.youtube.com/watch?v=aItVJprLYkg']
+import { Bookmark } from '../bookmark'
 
+export function homepage(bookmarks: Bookmark[]) {
   return `
     <ul>
-        ${urls.map(url => `<li><a href="${url}">${url}</a></li>`).join('')}
+        ${bookmarks
+          .map(bookmark => {
+            return `<li><a href="${bookmark.url}">${bookmark.title}</a></li>`
+          })
+          .join('')}
     </ul>
   `
 }

@@ -8,6 +8,11 @@ export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
 
   fastify.get('/', (_, reply) => {
     reply.header('Content-Type', 'text/html; charset=utf-8')
-    return reply.send(homepage())
+    return reply.send(
+      homepage([
+        { url: 'https://www.youtube.com/watch?v=z9quxZsLcfo', title: 'https://www.youtube.com/watch?v=z9quxZsLcfo' },
+        { url: 'https://www.youtube.com/watch?v=aItVJprLYkg', title: 'https://www.youtube.com/watch?v=aItVJprLYkg' },
+      ])
+    )
   })
 }

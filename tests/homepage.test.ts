@@ -14,9 +14,13 @@ describe('Homepage', async () => {
     const page = await context.newPage()
 
     await page.goto('http://localhost:8888/')
-    const list = page.getByRole('list')
 
-    await expect(list.getByRole('listitem')).toHaveCount(2)
+    const list = page.getByRole('list')
+    const listItems = list.getByRole('listitem')
+    await expect(listItems).toHaveCount(2)
+    await expect(listItems.nth(0)).toHaveText('https://www.youtube.com/watch?v=z9quxZsLcfo')
+    await expect(listItems.nth(1)).toHaveText('https://www.youtube.com/watch?v=aItVJprLYkg')
+
     await browser.close()
   })
 })
