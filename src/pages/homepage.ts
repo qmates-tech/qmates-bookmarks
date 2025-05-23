@@ -3,9 +3,7 @@ export function homepage() {
 
   return `
     <ul>
-      <li>
-        ${urls.map(url => `<a href="${url}">${url}</a>`).join('')}
-      </li>
+        ${urls.map(url => `<li><a href="${url}">${url}</a></li>`).join('')}
     </ul>
   `
 }

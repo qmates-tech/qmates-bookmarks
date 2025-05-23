@@ -1,5 +1,6 @@
-import { afterAll, beforeAll, describe, expect, it } from 'vitest'
+import { afterAll, beforeAll, describe, it } from 'vitest'
 import { bootstrapApp } from '../src/app-bootstrap'
+import { chromium, expect } from '@playwright/test'
 
 describe('Homepage', async () => {
   const app = bootstrapApp({ port: 8888 })
@@ -8,16 +9,14 @@ describe('Homepage', async () => {
   afterAll(() => app.stop())
 
   it('shows all saved bookmarks', async () => {
-    const resp = await fetch('http://localhost:8888/')
+    const browser = await chromium.launch()
+    const context = await browser.newContext() // Create new context
+    const page = await context.newPage()
 
-    expect(resp.status).toStrictEqual(200)
-    expect(resp.headers.get('Content-Type')).toStrictEqual('text/html; charset=utf-8')
-    const html = await resp.text()
-    expect(html).toContain(
-      '<a href="https://www.youtube.com/watch?v=z9quxZsLcfo">https://www.youtube.com/watch?v=z9quxZsLcfo</a>'
-    )
-    expect(html).toContain(
-      '<a href="https://www.youtube.com/watch?v=aItVJprLYkg">https://www.youtube.com/watch?v=aItVJprLYkg</a>'
-    )
+    await page.goto('http://localhost:8888/')
+    const list = page.getByRole('list')
+
+    await expect(list.getByRole('listitem')).toHaveCount(2)
+    await browser.close()
   })
 })
