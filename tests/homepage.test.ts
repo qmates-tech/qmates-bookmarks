@@ -12,6 +12,12 @@ describe('Homepage', async () => {
 
     expect(resp.status).toStrictEqual(200)
     expect(resp.headers.get('Content-Type')).toStrictEqual('text/html; charset=utf-8')
-    expect(await resp.text()).toContain('<a href="https://www.youtube.com/watch?v=z9quxZsLcfo">https://www.youtube.com/watch?v=z9quxZsLcfo</a>')
+    const html = await resp.text()
+    expect(html).toContain(
+      '<a href="https://www.youtube.com/watch?v=z9quxZsLcfo">https://www.youtube.com/watch?v=z9quxZsLcfo</a>'
+    )
+    expect(html).toContain(
+      '<a href="https://www.youtube.com/watch?v=aItVJprLYkg">https://www.youtube.com/watch?v=aItVJprLYkg</a>'
+    )
   })
 })
