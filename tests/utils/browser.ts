@@ -14,7 +14,7 @@ export class Browser {
 
     const context = await browser.newContext()
     const page = await context.newPage()
-    page.goto(`${this.baseUrl}${path}`)
+    await page.goto(`${this.baseUrl}${path}`)
     return page
   }
 }

@@ -10,11 +10,11 @@ export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
   const bookmarkRepository = new BookmarkRepository()
   bookmarkRepository.add({
     url: 'https://www.youtube.com/watch?v=z9quxZsLcfo',
-    title: 'https://www.youtube.com/watch?v=z9quxZsLcfo',
+    title: 'Is TDD dead?',
   })
   bookmarkRepository.add({
     url: 'https://www.youtube.com/watch?v=aItVJprLYkg',
-    title: 'https://www.youtube.com/watch?v=aItVJprLYkg',
+    title: 'You Must Be CRAZY To Do Pair Programming',
   })
 
   fastify.get('/', (_, reply) => {

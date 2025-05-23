@@ -5,7 +5,7 @@ export function homepage(bookmarks: Bookmark[]) {
     <ul>
         ${bookmarks
           .map(bookmark => {
-            return `<li><a href="${bookmark.url}">${bookmark.title}</a></li>`
+            return `<li><a href="${bookmark.url}" target="_blank">${bookmark.title}</a></li>`
           })
           .join('')}
     </ul>
