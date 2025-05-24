@@ -5,7 +5,7 @@
 - mark as read a bookmark
 - fetch title from bookmark url metadata
 - fetch description from bookmark url
-- fetch image from bookmarl url metadata
+- fetch image from bookmark url metadata
 - search for a bookmark by title
 - search for a bookmark by description
 - social login session
@@ -16,3 +16,5 @@
 - share a bookmark
 - create a list/group of bookmark
 - share a list/group of bookmark to other people that can add/remove articles
+- add "time to read" on the bookmark list
+- fetch the whole content of the page and show it in a "read mode"
