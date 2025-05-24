@@ -3,7 +3,7 @@ import { Browser as PlaywrightBrowser, chromium, expect as playwrightExpect } fr
 let browser: PlaywrightBrowser | undefined
 
 export class Browser {
-  public readonly expect = playwrightExpect
+  public readonly expect = playwrightExpect.configure({ timeout: 1000 })
 
   constructor(private readonly baseUrl: string) {}
 
