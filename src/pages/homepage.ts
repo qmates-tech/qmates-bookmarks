@@ -1,13 +1,13 @@
 import { Bookmark } from '../bookmark'
+import { html } from 'ghtml'
+import { HtmlElement } from '../html-plugin'
 
-export function homepage(bookmarks: Bookmark[]) {
-  return `
+export const homepage: HtmlElement<Bookmark[]> = (bookmarks) => {
+  return html`
     <ul>
-        ${bookmarks
-          .map(bookmark => {
-            return `<li><a href="${bookmark.url}" target="_blank">${bookmark.title}</a></li>`
-          })
-          .join('')}
+      !${bookmarks.map((bookmark) => {
+        return html`<li><a href="${bookmark.url}" target="_blank">${bookmark.title}</a></li>`
+      })}
     </ul>
   `
 }

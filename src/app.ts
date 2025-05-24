@@ -1,8 +1,9 @@
 import { FastifyPluginAsync } from 'fastify'
 import sensible from '@fastify/sensible'
 import { Config } from './config'
-import { homepage } from './pages/homepage'
 import { BookmarkRepository } from './bookmark-repository'
+import { homepage } from './pages/homepage'
+import { layout } from './pages/layout'
 
 export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
   await fastify.register(sensible)
@@ -19,7 +20,6 @@ export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
 
   fastify.get('/', (_, reply) => {
     const bookmarks = bookmarkRepository.all()
-    reply.header('Content-Type', 'text/html; charset=utf-8')
-    return reply.send(homepage(bookmarks))
+    return reply.html(layout, { title: 'Bookmarks', content: homepage(bookmarks) })
   })
 }
