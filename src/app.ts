@@ -1,5 +1,7 @@
 import { FastifyPluginAsync } from 'fastify'
 import sensible from '@fastify/sensible'
+import staticServe from '@fastify/static'
+import path from 'path'
 import { Config } from './config'
 import { BookmarkRepository } from './bookmark-repository'
 import { homepage } from './pages/homepage'
@@ -8,6 +10,11 @@ import { render } from './html-utils'
 
 export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
   await fastify.register(sensible)
+
+  await fastify.register(staticServe, {
+    root: path.join(__dirname, '../../public/static'),
+    prefix: `/static`,
+  })
 
   const bookmarkRepository = new BookmarkRepository()
   bookmarkRepository.add({
