@@ -1,6 +1,6 @@
-import { html, HtmlLayout } from '../html-plugin'
+import { html, HtmlElement } from '../html-utils'
 
-export const layout: HtmlLayout<{ title: string }> = ({ title, content }) => {
+export const layout: HtmlElement<{ title: string; content: string }> = ({ title, content }) => {
   return html`
     <!DOCTYPE html>
     <html lang="en">

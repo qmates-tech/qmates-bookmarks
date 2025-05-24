@@ -4,6 +4,7 @@ import { Config } from './config'
 import { BookmarkRepository } from './bookmark-repository'
 import { homepage } from './pages/homepage'
 import { layout } from './pages/layout'
+import { render } from './html-utils'
 
 export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
   await fastify.register(sensible)
@@ -20,6 +21,6 @@ export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
 
   fastify.get('/', (_, reply) => {
     const bookmarks = bookmarkRepository.all()
-    return reply.html(layout, { title: 'Bookmarks', content: homepage(bookmarks) })
+    return render(reply, layout({ title: 'Bookmarks', content: homepage(bookmarks) }))
   })
 }

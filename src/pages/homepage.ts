@@ -1,6 +1,6 @@
 import { Bookmark } from '../bookmark'
 import { html } from 'ghtml'
-import { HtmlElement } from '../html-plugin'
+import { HtmlElement } from '../html-utils'
 
 export const homepage: HtmlElement<Bookmark[]> = (bookmarks) => {
   return html`

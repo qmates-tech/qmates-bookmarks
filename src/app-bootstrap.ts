@@ -2,13 +2,11 @@ import Fastify from 'fastify'
 import { app } from './app'
 import { logger } from './logger'
 import { Config } from './config'
-import { htmlPlugin } from './html-plugin'
 
 export function bootstrapApp(config: Config) {
   const fastify = Fastify({ loggerInstance: logger })
   logger.info('Inizializing the application...')
 
-  fastify.register(htmlPlugin, { excludeLayoutWithHeader: 'hx-header' })
   fastify.register(app, config)
 
   return {
