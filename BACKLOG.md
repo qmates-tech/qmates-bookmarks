@@ -17,4 +17,5 @@
 - create a list/group of bookmark
 - share a list/group of bookmark to other people that can add/remove articles
 - add "time to read" on the bookmark list
+- the search shows all: tags, list/groups, bookmarks in different sections with one single search text
 - fetch the whole content of the page and show it in a "read mode"
