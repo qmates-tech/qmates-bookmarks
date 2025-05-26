@@ -19,3 +19,4 @@
 - add "time to read" on the bookmark list
 - the search shows all: tags, list/groups, bookmarks in different sections with one single search text
 - fetch the whole content of the page and show it in a "read mode"
+- recognize link types (text, video, audio, pdf, etc.) and show the type in the list
