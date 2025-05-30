@@ -20,15 +20,7 @@ export const layout: HtmlElement<{ title: string; content: string }> = ({ title,
               <a href="/" class="text-lg sm:text-xl font-medium">Bookmarks</a>
             </div>
             <div class="flex gap-1 sm:gap-2">
-              <div class="tooltip tooltip-bottom" data-tip="save new bookmark">
-                <button class="btn btn-ghost btn-circle btn-sm sm:btn-md">
-                  <image
-                    src="/static/img/bookmark.svg"
-                    alt="add bookmark"
-                    class="w-5 h-5 text-gray-800 dark:text-white"
-                  />
-                </button>
-              </div>
+              <div class="tooltip tooltip-bottom" data-tip="save new bookmark">!${addBookmark()}</div>
               !${search()}
             </div>
           </div>
@@ -36,6 +28,48 @@ export const layout: HtmlElement<{ title: string; content: string }> = ({ title,
         <div class="p-4 md:p-8 max-w-5xl mx-auto">!${content}</div>
       </body>
     </html>
+  `
+}
+
+function addBookmark() {
+  return html`
+    <button onclick="showAddBookmarkModal()" class="btn btn-ghost btn-circle btn-sm sm:btn-md">
+      <image src="/static/img/bookmark.svg" alt="add bookmark" class="w-5 h-5 text-gray-800 dark:text-white" />
+    </button>
+    <script>
+      function showAddBookmarkModal() {
+        add_bookmark_modal.showModal()
+        setTimeout(() => document.getElementById('add-bookmark-url').focus(), 100)
+      }
+    </script>
+    <dialog id="add_bookmark_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <form method="dialog">
+          <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+        </form>
+        <h3 class="text-lg font-bold">Save a Bookmark!</h3>
+        <div class="join pt-7 w-full mx-auto">
+          <div class="w-full">
+            <label class="input validator w-full">
+              <image class="h-[1em] opacity-50" src="/static/img/link.svg" alt="bookmark" />
+              <input
+                id="add-bookmark-url"
+                type="url"
+                required
+                placeholder="https://"
+                pattern="^(https?://)?([a-zA-Z0-9]([a-zA-Z0-9\\-].*[a-zA-Z0-9])?\\.)+[a-zA-Z].*$"
+                title="Must be valid URL"
+              />
+            </label>
+            <p class="validator-hint">Must be valid URL</p>
+          </div>
+          <button class="btn btn-neutral join-item">Save</button>
+        </div>
+      </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
   `
 }
 
