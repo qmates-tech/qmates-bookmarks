@@ -14,7 +14,7 @@ export const layout: HtmlElement<{ title: string; content: string }> = ({ title,
         <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
       </head>
       <body>
-        <div class="shadow-sm">
+        <div class="shadow-sm z-20 fixed w-full">
           <div class="navbar bg-base-100 max-w-5xl mx-auto px-4 sm:px-6 md:px-8">
             <div class="flex-1">
               <a href="/" class="text-lg sm:text-xl font-medium">Bookmarks</a>
@@ -25,7 +25,7 @@ export const layout: HtmlElement<{ title: string; content: string }> = ({ title,
             </div>
           </div>
         </div>
-        <div class="p-4 md:p-8 max-w-5xl mx-auto">!${content}</div>
+        <div class="p-4 md:p-8 pt-20 md:pt-24 max-w-5xl mx-auto">!${content}</div>
       </body>
     </html>
   `
