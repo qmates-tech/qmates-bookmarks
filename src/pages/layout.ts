@@ -42,7 +42,7 @@ function addBookmark() {
         setTimeout(() => document.getElementById('add-bookmark-url').focus(), 100)
       }
     </script>
-    <dialog id="add_bookmark_modal" class="modal modal-bottom sm:modal-middle">
+    <dialog id="add_bookmark_modal" class="modal sm:modal-middle">
       <div class="modal-box">
         <form method="dialog">
           <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
