@@ -1,8 +1,136 @@
-@import "tailwindcss" source(none);
-@source "./src/views/*.ts";
+@import "tailwindcss";
 @plugin "daisyui";
 
 @layer application {
+    .container {
+        @apply max-w-5xl mx-auto;
+    }
+
+    .navigation {
+        @apply shadow-sm z-20 fixed w-full;
+
+        .navbar {
+            @apply bg-base-100 px-4 sm:px-6 md:px-8;
+
+            .logo {
+                @apply flex-1;
+
+                a {
+                    @apply text-lg sm:text-xl font-medium;
+                }
+            }
+
+            .search {
+                @apply flex gap-1 sm:gap-2;
+            }
+        }
+    }
+
+    .search-form {
+        @apply input input-sm sm:input-md max-w-[200px] sm:max-w-xs;
+
+        > img {
+            @apply h-[1em] opacity-50;
+        }
+
+        > input {
+            @apply grow text-sm sm:text-base;
+        }
+
+        > kbd {
+            @apply kbd kbd-xs sm:kbd-sm md:kbd-md;
+        }
+    }
+
+    .add-bookmark {
+        > button {
+            @apply btn btn-ghost btn-circle btn-sm sm:btn-md;
+
+            img {
+                @apply w-5 h-5 text-gray-800;
+            }
+        }
+
+        .modal {
+            .close {
+                @apply btn btn-sm btn-circle btn-ghost absolute right-2 top-2;
+            }
+
+            h3 {
+                @apply text-lg font-bold;
+            }
+        }
+    }
+
+    .join-input-with-validator {
+        @apply join pt-7 w-full mx-auto;
+
+        > div {
+            @apply w-full;
+
+            > label {
+                @apply input validator w-full;
+
+                > img {
+                    @apply h-[1em] opacity-50;
+                }
+            }
+        }
+
+        .input-button {
+            @apply btn btn-neutral join-item;
+        }
+    }
+
+    .page {
+        @apply p-4 md:p-8 pt-20 md:pt-24;
+    }
+
+    ul.bookmark-list {
+        @apply grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4;
+
+        > li {
+            @apply h-full bg-base-100 md:shadow-sm md:rounded-lg;
+
+            .bookmark {
+                @apply flex flex-row md:flex md:flex-col h-full;
+                > figure {
+                    @apply w-[80px] h-[80px] md:w-[200px] md:h-[150px] md:w-full p-3 md:p-0 flex-shrink-0;
+
+                    > img {
+                        @apply object-cover w-full h-full rounded-lg md:rounded-t-md md:rounded-b-none;
+                    }
+                }
+
+                > .bookmark-content {
+                    @apply flex-1 py-3 pl-0 pr-3 md:p-4 flex flex-col;
+
+                    > h2 {
+                        @apply max-md:pr-5 md:font-bold;
+                    }
+
+                    > div {
+                        @apply md:text-right md:mt-auto opacity-45;
+                    }
+                }
+            }
+        }
+    }
+
+    .dropdown {
+        > button {
+            @apply btn btn-ghost btn-sm btn-circle z-10;
+        }
+
+        ul.dropdown-content {
+            @apply menu z-[50] p-2 shadow bg-base-100 rounded-box w-52;
+
+            > li:last-child::after {
+                @apply hidden;
+            }
+        }
+    }
+
     .bookmarks {
         li {
             border-bottom: 1px solid color-mix(in oklab, var(--color-base-content) 5%, transparent);
