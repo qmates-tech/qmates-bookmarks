@@ -12,7 +12,7 @@ export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
   await fastify.register(sensible)
 
   await fastify.register(staticServe, {
-    root: path.join(__dirname, '../../public/static'),
+    root: path.join(__dirname, '../public/static'),
     prefix: `/static`,
   })
 

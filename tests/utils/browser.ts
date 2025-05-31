@@ -14,7 +14,21 @@ export class Browser {
 
     const context = await browser.newContext()
     const page = await context.newPage()
+
     await page.goto(`${this.baseUrl}${path}`)
+
+    // Inject CSS to disable animations and transition
+    await page.addStyleTag({
+      content: `
+        *, *::before, *::after {
+          animation-duration: 0s !important;
+          transition-duration: 0s !important;
+          animation-delay: 0s !important;
+          transition-delay: 0s !important;
+        }
+      `,
+    })
+
     return page
   }
 }
