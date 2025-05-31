@@ -29,15 +29,17 @@ export const layout: HtmlElement<{ title: string; content: string }> = ({ title,
 function addBookmark() {
   return html`
     <div class="add-bookmark tooltip tooltip-bottom" data-tip="save new bookmark">
-      <button onclick="showAddBookmarkModal()">
+      <button
+        onclick="
+          add_bookmark_modal.showModal()
+          setTimeout(() => {
+            add_bookmark_url.focus();
+            if(add_bookmark_url.value) add_bookmark_url.select();
+          }, 100)
+      "
+      >
         <img src="/static/img/bookmark.svg" alt="add bookmark" />
       </button>
-      <script>
-        function showAddBookmarkModal() {
-          add_bookmark_modal.showModal()
-          setTimeout(() => document.getElementById('add-bookmark-url').focus(), 100)
-        }
-      </script>
       <dialog id="add_bookmark_modal" class="modal sm:modal-middle">
         <div class="modal-box">
           <form method="dialog">
@@ -46,10 +48,10 @@ function addBookmark() {
           <h3>Save a Bookmark!</h3>
           <div class="join-input-with-validator">
             <div>
-              <label>
+              <label id="add_bookmark_label">
                 <img src="/static/img/link.svg" alt="bookmark" />
                 <input
-                  id="add-bookmark-url"
+                  id="add_bookmark_url"
                   type="url"
                   required
                   placeholder="https://"
