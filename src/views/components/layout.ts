@@ -1,4 +1,4 @@
-import { html, HtmlElement } from '../html-utils'
+import { html, HtmlElement } from '../utils/html-utils'
 
 export const layout: HtmlElement<{ title: string; content: string }> = ({ title, content }) => {
   return html`

@@ -14,7 +14,7 @@
     "dev": "npm run build && concurrently -k -p \"[{name}]\" -n \"TS,CSS,App\" \"tsc -w\" \"npm run build:css -- --watch\" \"node --watch . | pino-pretty\"",
     "format": "prettier --write",
     "build": "rm -rf ./dist/*; tsc && npm run build:css",
-    "build:css": "npx @tailwindcss/cli -i ./src/app.css -o ./public/static/css/style.css",
+    "build:css": "npx @tailwindcss/cli -i src/views/app.css -o ./public/static/css/style.css",
     "prepare": "husky || true"
   },
   "author": "Alessio Coser",

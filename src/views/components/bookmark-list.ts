@@ -1,9 +1,8 @@
-import { Bookmark } from '../bookmark'
-import { html } from 'ghtml'
-import { HtmlElement } from '../html-utils'
-import { generatePlaceholderImage } from '../image-generator'
+import { Bookmark } from '../../bookmark'
+import { html, HtmlElement } from '../utils/html-utils'
+import { generatePlaceholderImage } from '../../image-generator'
 
-export const homepage: HtmlElement<Bookmark[]> = (bookmarks) => {
+export const bookmarkList: HtmlElement<Bookmark[]> = (bookmarks) => {
   return html`
     <ul class="bookmark-list">
       !${bookmarks.map(bookmarkListItem)}
