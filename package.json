@@ -11,9 +11,10 @@
     "test": "npm run build && LOG_LEVEL=SILENT vitest run",
     "coverage": "npm run build && LOG_LEVEL=SILENT vitest run --coverage",
     "start": "node .",
-    "dev": "npm run build && concurrently -k -p \"[{name}]\" -n \"TS,App\" \"tsc -w\" \"node --watch . | pino-pretty\"",
+    "dev": "npm run build && concurrently -k -p \"[{name}]\" -n \"TS,CSS,App\" \"tsc -w\" \"npm run build:css -- --watch\" \"node --watch . | pino-pretty\"",
     "format": "prettier --write",
-    "build": "rm -rf ./dist/*; tsc",
+    "build": "rm -rf ./dist/*; tsc && npm run build:css",
+    "build:css": "npx @tailwindcss/cli -i ./src/app.css -o ./public/static/css/style.css",
     "prepare": "husky || true"
   },
   "author": "Alessio Coser",
@@ -26,13 +27,16 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
+    "@tailwindcss/cli": "^4.1.8",
     "@types/node": "^22.15.21",
     "@vitest/coverage-v8": "^3.1.4",
     "concurrently": "^9.1.2",
+    "daisyui": "^5.0.43",
     "husky": "^9.1.7",
     "lint-staged": "^16.0.0",
     "pino-pretty": "^13.0.0",
     "prettier": "^3.5.3",
+    "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3",
     "vitest": "^3.1.4"
   }
