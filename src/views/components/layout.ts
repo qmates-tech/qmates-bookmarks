@@ -1,9 +1,9 @@
-import { html, HtmlElement } from '../utils/html-utils'
+import { html, HtmlElement } from '../html-utils'
 
 export const layout: HtmlElement<{ title: string; content: string }> = ({ title, content }) => {
   return html`
     <!doctype html>
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -49,7 +49,7 @@ function addBookmark() {
           <div class="join-input-with-validator">
             <div>
               <label id="add_bookmark_label">
-                <img src="/static/img/link.svg" alt="bookmark" />
+                <img src="/static/img/link.svg" alt="add-bookmark" />
                 <input
                   id="add_bookmark_url"
                   type="url"

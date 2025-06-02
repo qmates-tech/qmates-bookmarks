@@ -6,7 +6,7 @@ import { Config } from './config'
 import { BookmarkRepository } from './bookmark-repository'
 import { bookmarkList } from './views/components/bookmark-list'
 import { layout } from './views/components/layout'
-import { render } from './views/utils/html-utils'
+import { render } from './views/html-utils'
 
 export const app: FastifyPluginAsync<Config> = async (fastify, config) => {
   await fastify.register(sensible)

@@ -1,5 +1,5 @@
 import { Bookmark } from '../../bookmark'
-import { html, HtmlElement } from '../utils/html-utils'
+import { html, HtmlElement } from '../html-utils'
 import { generatePlaceholderImage } from '../../image-generator'
 
 export const bookmarkList: HtmlElement<Bookmark[]> = (bookmarks) => {
